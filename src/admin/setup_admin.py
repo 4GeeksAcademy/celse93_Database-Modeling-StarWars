@@ -1,7 +1,7 @@
 import os
 from admin.secure_model import SecureModelView
 from flask_admin import Admin
-from models import db, User
+from models import db, Characters, Planets, Vehicles, Species
 
 
 def setup_admin(app):
@@ -9,4 +9,3 @@ def setup_admin(app):
     app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
     admin = Admin(app, name='4Geeks Admin', template_mode='bootstrap3')
 
-    admin.add_view(SecureModelView(User, db.session))
