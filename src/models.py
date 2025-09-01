@@ -7,7 +7,7 @@ db = SQLAlchemy()
 
 
 class Characters(db.Model):
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(nullable=False)
     description: Mapped[str] = mapped_column(String(500), nullable=False)
     planet_id: Mapped[int] = mapped_column(ForeignKey("planets.id"))
@@ -27,7 +27,7 @@ class Characters(db.Model):
 
 
 class Vehicles(db.Model):
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(nullable=False)
     type: Mapped[str] = mapped_column(nullable=False)
     max_speed: Mapped[str] = mapped_column(nullable=False)
@@ -45,7 +45,7 @@ class Vehicles(db.Model):
 
 
 class Planets(db.Model):
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(nullable=False)
     description: Mapped[str] = mapped_column(String(500), nullable=False)
     characters: Mapped[List["Characters"]] = relationship(back_populates="planet")
@@ -60,7 +60,7 @@ class Planets(db.Model):
 
 
 class Species(db.Model):
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     type: Mapped[str] = mapped_column(nullable=False)
     planet_id: Mapped[int] = mapped_column(ForeignKey("planets.id"))
     characters: Mapped[List["Characters"]] = relationship(back_populates="specie")
